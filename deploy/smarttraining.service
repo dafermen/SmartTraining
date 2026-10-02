@@ -1,0 +1,24 @@
+[Unit]
+Description=SmartTraining API
+After=network.target
+
+[Service]
+Type=simple
+User=smarttraining
+Group=smarttraining
+WorkingDirectory=/var/www/smarttraining.innovalogic.tech/app/backend
+EnvironmentFile=/etc/smarttraining/smarttraining.env
+ExecStart=/usr/local/bin/node dist/src/server.js
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/smarttraining
+RestrictSUIDSGID=true
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

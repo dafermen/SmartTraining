@@ -1,0 +1,16 @@
+[
+  {
+    "id": "10000000-0000-4000-8000-000000000001",
+    "title": "SST",
+    "description": "Capacitación introductoria sobre prevención de riesgos, prácticas seguras y responsabilidades del trabajador.",
+    "status": "PUBLISHED",
+    "createdAt": "2026-07-16T00:00:00.000Z",
+    "updatedAt": "2026-07-18T11:25:10.300Z",
+    "createdBy": "seed-admin",
+    "moduleIds": [
+      "20000000-0000-4000-8000-000000000001",
+      "20000000-0000-4000-8000-000000000002",
+      "20000000-0000-4000-8000-000000000003"
+    ]
+  }
+]

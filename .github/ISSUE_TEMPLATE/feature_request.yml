@@ -1,0 +1,25 @@
+name: Solicitud de mejora
+description: Proponer una capacidad o mejora de experiencia
+title: "[MEJORA] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problema
+      description: ¿Qué necesidad del administrador o participante se desea resolver?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Resultado esperado
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Criterios de aceptación
+      description: Incluya comportamiento, permisos, móvil y datos afectados.
+    validations:
+      required: true

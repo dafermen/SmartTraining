@@ -1,0 +1,34 @@
+name: Reporte de error
+description: Registrar un defecto reproducible de SmartTraining
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Resumen
+      description: Explique qué ocurrió y qué esperaba.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Pasos para reproducir
+      placeholder: |
+        1. Iniciar sesión como...
+        2. Abrir...
+        3. Seleccionar...
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Entorno
+      description: Indique local/producción, navegador, dispositivo y versión.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidencia segura
+      description: Adjunte mensajes o capturas sin contraseñas, tokens, cookies ni datos sensibles.

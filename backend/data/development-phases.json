@@ -1,0 +1,106 @@
+[
+  {
+    "id": "phase-0",
+    "code": "F0",
+    "name": "Definición",
+    "description": "Acordar objetivo, alcance, roles, requisitos y aceptación.",
+    "order": 0,
+    "status": "COMPLETED"
+  },
+  {
+    "id": "phase-1",
+    "code": "F1",
+    "name": "Arquitectura",
+    "description": "Diseñar frontend, backend, datos, medios, seguridad y documentación.",
+    "order": 1,
+    "status": "COMPLETED"
+  },
+  {
+    "id": "phase-2",
+    "code": "F2",
+    "name": "Configuración inicial",
+    "description": "Crear proyectos, herramientas, estructura y datos semilla.",
+    "order": 2,
+    "status": "COMPLETED"
+  },
+  {
+    "id": "phase-3",
+    "code": "F3",
+    "name": "Autenticación",
+    "description": "Implementar identidad, JWT, roles y rutas protegidas.",
+    "order": 3,
+    "status": "COMPLETED"
+  },
+  {
+    "id": "phase-4",
+    "code": "F4",
+    "name": "Administración de capacitaciones",
+    "description": "Implementar CRUD, módulos, orden y publicación.",
+    "order": 4,
+    "status": "COMPLETED"
+  },
+  {
+    "id": "phase-5",
+    "code": "F5",
+    "name": "Administración de videos",
+    "description": "Implementar carga, procesamiento y streaming protegido.",
+    "order": 5,
+    "status": "COMPLETED"
+  },
+  {
+    "id": "phase-6",
+    "code": "F6",
+    "name": "Experiencia del participante",
+    "description": "Construir catálogo, reproductor y progreso.",
+    "order": 6,
+    "status": "COMPLETED"
+  },
+  {
+    "id": "phase-7",
+    "code": "F7",
+    "name": "Documentación",
+    "description": "Completar manuales y mostrar Markdown en la aplicación.",
+    "order": 7,
+    "status": "IN_PROGRESS"
+  },
+  {
+    "id": "phase-8",
+    "code": "F8",
+    "name": "Pruebas",
+    "description": "Validar reglas, seguridad, medios, progreso y responsive.",
+    "order": 8,
+    "status": "IN_PROGRESS"
+  },
+  {
+    "id": "phase-9",
+    "code": "F9",
+    "name": "Entrega del MVP",
+    "description": "Revisar, demostrar, documentar limitaciones y publicar release.",
+    "order": 9,
+    "status": "IN_PROGRESS"
+  },
+  {
+    "id": "phase-10",
+    "code": "F10",
+    "name": "Mejoras de experiencia administrativa",
+    "description": "Optimizar descubrimiento, retroalimentación, gestión visual y vista previa del contenido.",
+    "order": 10,
+    "status": "COMPLETED"
+  },
+  {
+    "id": "phase-11",
+    "code": "F11",
+    "name": "Calidad previa al despliegue",
+    "description": "Formalizar y automatizar las trece puertas de aceptación, pruebas técnicas y operación.",
+    "order": 11,
+    "status": "IN_PROGRESS"
+  },
+  {
+    "id": "phase-12",
+    "code": "F12",
+    "name": "Asignaciones y vencimientos",
+    "description": "Entregar capacitaciones a participantes con autorización integral y fechas límite opcionales.",
+    "order": 12,
+    "status": "COMPLETED"
+  }
+]

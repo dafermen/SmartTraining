@@ -1,0 +1,32 @@
+[
+  {
+    "id": "20000000-0000-4000-8000-000000000001",
+    "trainingId": "10000000-0000-4000-8000-000000000001",
+    "title": "Introducción a la seguridad laboral",
+    "description": "Conceptos y responsabilidades fundamentales.",
+    "order": 0,
+    "videoIds": [],
+    "createdAt": "2026-07-16T00:00:00.000Z",
+    "updatedAt": "2026-07-17T11:57:42.557Z"
+  },
+  {
+    "id": "20000000-0000-4000-8000-000000000002",
+    "trainingId": "10000000-0000-4000-8000-000000000001",
+    "title": "Identificación de riesgos",
+    "description": "Reconocimiento inicial de peligros en el trabajo.",
+    "order": 1,
+    "videoIds": [],
+    "createdAt": "2026-07-16T00:00:00.000Z",
+    "updatedAt": "2026-07-16T00:00:00.000Z"
+  },
+  {
+    "id": "20000000-0000-4000-8000-000000000003",
+    "trainingId": "10000000-0000-4000-8000-000000000001",
+    "title": "Prevención de accidentes",
+    "description": "Prácticas para reducir incidentes y responder de forma segura.",
+    "order": 2,
+    "videoIds": [],
+    "createdAt": "2026-07-16T00:00:00.000Z",
+    "updatedAt": "2026-07-16T00:00:00.000Z"
+  }
+]

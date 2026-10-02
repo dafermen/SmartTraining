@@ -1,0 +1,22 @@
+[
+  {
+    "id": "seed-admin",
+    "username": "admin",
+    "passwordHash": "$2b$12$dcaVvySWAgmsqHWbgSvP0u1uuWiW1sRBIdkEr5s3ivi/C5IpYLZKW",
+    "role": "ADMIN",
+    "displayName": "Administrador de demostración",
+    "active": true,
+    "createdAt": "2026-07-17T04:02:09.468Z",
+    "updatedAt": "2026-07-17T04:16:41.719Z"
+  },
+  {
+    "id": "seed-learner",
+    "username": "learner",
+    "passwordHash": "$2b$12$dcaVvySWAgmsqHWbgSvP0u1uuWiW1sRBIdkEr5s3ivi/C5IpYLZKW",
+    "role": "LEARNER",
+    "displayName": "Participante de demostración",
+    "active": true,
+    "createdAt": "2026-07-17T04:02:09.468Z",
+    "updatedAt": "2026-07-17T04:16:41.719Z"
+  }
+]
