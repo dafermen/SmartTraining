@@ -91,6 +91,7 @@ Ejecutada localmente el **2026-10-01** sobre el candidato preparado para GitHub,
 - React Router actualizado a 7.18.3, Axios a 1.20.0, Multer a 2.4.0, express-rate-limit a 8.7.0, ip-address a 10.7.3 y Vitest a 4.1.11.
 - Documentación: **61 archivos Markdown**, estructura y enlaces relativos verificados.
 - Capturas reales: panel administrativo, asignaciones, catálogo de participante y vista móvil verificadas visualmente.
+- GitHub Actions: workflow `CI` aprobado en `main` sobre Ubuntu con instalación limpia, lint, pruebas, build, Playwright y auditoría.
 
 Las suites frontend y backend limitan workers y usan 20 segundos para pruebas/hooks, evitando que una máquina lenta aborte jsdom o FFmpeg mientras aún escribe temporales.
 

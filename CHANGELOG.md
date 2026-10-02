@@ -57,3 +57,4 @@ Todos los cambios relevantes se registran aquí siguiendo Keep a Changelog.
 - Capturadas las excepciones del procesamiento de video en segundo plano para evitar rechazos no gestionados durante apagados o fallos de almacenamiento.
 - Actualizado Axios a 1.20.0 para corregir los avisos altos detectados por la auditoría de dependencias de producción.
 - Actualizados Multer a 2.4.0, express-rate-limit a 8.7.0 e ip-address a 10.7.3 para cerrar los avisos moderados restantes en producción.
+- Actualizadas y fijadas por hash las acciones oficiales de checkout y Node.js para usar su runtime vigente en CI.
