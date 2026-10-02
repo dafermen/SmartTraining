@@ -159,3 +159,7 @@ El MVP usa disco local, SQLite y JSON: no ofrece escalado horizontal ni procesam
 Consulte [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md), [LICENSE](LICENSE) y [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md).
 
 El estado de continuidad y los próximos pasos se mantienen en [CURRENT_STATUS.md](CURRENT_STATUS.md).
+
+## DOC-STD-20261002 — Navegación documental
+
+Consultar el [mapa documental](docs/README.md) para encontrar fuentes oficiales, rutas de lectura y reglas de mantenimiento del proyecto.

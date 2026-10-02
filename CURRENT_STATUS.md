@@ -169,3 +169,7 @@ La siguiente sesión debe repetir estas validaciones si modifica código o depen
 - `docs/22-risks-and-limitations.md`: límites operativos.
 - `backend/data/development-phases.json`: estado de fases.
 - `backend/data/development-tasks.json`: tablero de tareas.
+
+## DOC-STD-20261002 — Organización documental
+
+El [mapa documental](docs/README.md) identifica fuentes canónicas y reglas de mantenimiento. Se conservan los hitos de implementación y la aceptación pendiente. Esta entrega documental registra validación y publicación por separado.

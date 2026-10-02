@@ -50,3 +50,38 @@ La API deriva el catálogo de nombres con formato seguro `NN-slug.md`. El rol `L
 5. Añada o ajuste pruebas de autorización cuando cambie la audiencia.
 
 No se usa VitePress ni existe un segundo sitio estático: el lector React mantiene autenticación, autorización por rol e identidad visual como única experiencia documental.
+
+## DOC-STD-20261002 — Fuentes canónicas
+
+Estándar documental v1.0 · revisión 2026-10-02. Idioma principal: español.
+
+Plataforma de formación React/Express con contenido privado.
+
+La API controla roles, asignaciones y medios privados. SQLite y JSON atómico tienen funciones distintas; conservar una única instancia escritora en producción. Las guías técnicas canónicas enlazan los manuales numerados. No publicar vídeos, bases de datos ni capturas de contenido sensible.
+
+| Necesidad | Fuente oficial |
+| --- | --- |
+| Presentación | [README.md](../README.md) |
+| Estado vigente | [CURRENT_STATUS.md](../CURRENT_STATUS.md) |
+| Desarrollo | [docs/DEVELOPMENT.md](DEVELOPMENT.md) |
+| Arquitectura | [docs/ARCHITECTURE.md](ARCHITECTURE.md) |
+| API / contratos | [docs/API.md](API.md) |
+| Pruebas | [docs/TESTING.md](TESTING.md) |
+| Seguridad | [docs/SECURITY.md](SECURITY.md) |
+| Despliegue | [docs/DEPLOYMENT.md](DEPLOYMENT.md) |
+| Operación | [docs/OPERATIONS.md](OPERATIONS.md) |
+| Solución de problemas | [docs/TROUBLESHOOTING.md](TROUBLESHOOTING.md) |
+| Uso | [docs/12-user-manual.md](12-user-manual.md) |
+| Administración | [docs/11-admin-manual.md](11-admin-manual.md) |
+| Configuración | [docs/07-configuration-guide.md](07-configuration-guide.md) |
+| Modelo de datos | [docs/09-data-model.md](09-data-model.md) |
+| Historia | [CHANGELOG.md](../CHANGELOG.md) |
+| Decisiones | [docs/adr/README.md](adr/README.md) |
+
+Para probar el producto, comenzar por presentación, estado y uso. Para desarrollar, continuar con instalación, arquitectura y pruebas. Para operar, consultar despliegue, seguridad y recuperación. El índice detallado existente conserva su validez.
+
+### Evidencia y actualización
+
+Separar estado vigente, historia y decisiones. Los resultados de pruebas fechados conservan su valor histórico. Este mapa no vuelve a ejecutar todos los comandos documentados ni cierra la aceptación pendiente del producto. Registrar las comprobaciones realmente ejecutadas, su entorno y sus límites antes de publicar.
+
+Actualizar la guía de origen al cambiar comandos, configuración, comportamiento, permisos o despliegue. Mantener enlaces y rutas del portal. Usar capturas reales con datos sintéticos; nunca publicar valores de .env, claves, datos de usuarios ni logs operativos. Un commit local, un commit remoto y un artefacto desplegado son estados diferentes.
