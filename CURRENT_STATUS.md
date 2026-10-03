@@ -1,5 +1,10 @@
 # Estado actual de SmartTraining
 
+## 2026-10-03 · Navegación documental local
+
+Búsqueda por contenido exclusivamente sobre el catálogo autorizado. Carga acotada y protección frente a respuestas antiguas; copia, índice, tema y enlaces entre capítulos. El backend sigue filtrando por rol. verify completo: 24 pruebas frontend y 41 backend; regresión de búsqueda autorizada; navegador con sesión LEARNER sintética en 1440/390 px. Detalle: [navegación web](docs/WEB_NAVIGATION.md). Sin publicación ni despliegue; los hitos de producto conservan su estado.
+
+
 Última actualización: **2026-10-01**
 
 ## Resumen ejecutivo
