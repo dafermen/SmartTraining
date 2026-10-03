@@ -1,3 +1,4 @@
+import { DocumentationCode } from "./DocumentationCode";
 import { isValidElement, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
@@ -22,7 +23,8 @@ const documentationLink = (href: string | undefined) => {
   if (!href?.includes(".md")) return undefined;
   const filename = href.split("/").pop();
   const id = filename?.replace(/\.md(?:#.*)?$/, "");
-  return id && /^\d{2}-[a-z0-9-]+$/.test(id) ? `/docs/${id}` : undefined;
+  const fragment = href.includes("#") ? `#${href.split("#").slice(1).join("#")}` : "";
+  return id && /^\d{2}-[a-z0-9-]+$/.test(id) ? `/docs/${id}${fragment}` : undefined;
 };
 
 export function MarkdownDocument({ content }: { content: string }) {
@@ -88,9 +90,9 @@ export function MarkdownDocument({ content }: { content: string }) {
             );
           },
           pre: ({ children }) => (
-            <pre className="my-5 overflow-x-auto rounded-xl bg-slate-950 p-4 text-xs leading-6 text-slate-100 sm:p-5 sm:text-sm">
+            <DocumentationCode className="my-5 overflow-x-auto rounded-xl bg-slate-950 p-4 text-xs leading-6 text-slate-100 sm:p-5 sm:text-sm">
               {children}
-            </pre>
+            </DocumentationCode>
           ),
           code: ({ children, className }) =>
             className ? (

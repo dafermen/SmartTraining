@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { documentationApi } from "../api/documentation";
@@ -100,4 +100,17 @@ npm run dev
     );
     expect(container.querySelector("script")).toBeNull();
   });
+  it("searches content only within the authorized catalog", async () => {
+    vi.mocked(documentationApi.get).mockImplementation(async id => ({
+      ...documents.find(item => item.id === id)!,
+      content: id === "21-glossary" ? "needleContentOnly" : "Manual",
+    }));
+    render(<MemoryRouter initialEntries={["/docs"]}><Routes><Route path="/docs" element={<DocumentationPage />} /></Routes></MemoryRouter>);
+    await screen.findAllByText("Manual del participante");
+    fireEvent.change(screen.getByRole("searchbox"), {target:{value:"needleContentOnly"}});
+    await waitFor(() => expect(screen.getAllByText("Glosario").length).toBeGreaterThan(0));
+    expect(screen.queryByText("Manual del participante")).not.toBeInTheDocument();
+    expect(vi.mocked(documentationApi.get).mock.calls.every(([id]) => documents.some(item => item.id === id))).toBe(true);
+  });
+
 });

@@ -1,5 +1,6 @@
+import "../features/documentation/innovalogic.css";
 import { useEffect, useMemo, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { documentationApi } from "../api/documentation";
 import {
   headingId,
@@ -29,6 +30,10 @@ const quickLinkDefinitions = [
 export function DocumentationPage() {
   const { documentId } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
+  const [theme, setTheme] = useState(() => { try { return localStorage.getItem("innovalogic-docs-theme") === "dark" ? "dark" : "light"; } catch { return "light"; } });
+  const [searchBodies, setSearchBodies] = useState<Record<string,string>>({});
+  const normalize = (text: string) => text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("es");
   const [documents, setDocuments] = useState<DocumentationSummary[]>([]);
   const [document, setDocument] = useState<DocumentationDocument>();
   const [query, setQuery] = useState("");
@@ -36,6 +41,7 @@ export function DocumentationPage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
+    let active = true;
     setLoading(true);
     setError("");
     Promise.all([
@@ -45,23 +51,54 @@ export function DocumentationPage() {
         : Promise.resolve(undefined),
     ])
       .then(([catalog, selected]) => {
+        if (!active) return;
         setDocuments(catalog);
         setDocument(selected);
       })
-      .catch(() => setError("No pudimos cargar la documentación solicitada."))
-      .finally(() => setLoading(false));
+      .catch(() => { if (active) setError("No pudimos cargar la documentación solicitada."); })
+      .finally(() => { if (active) setLoading(false); });
+    return () => { active = false; };
   }, [documentId]);
 
+  useEffect(() => {
+    if (!query.trim() || !documents.length) return;
+    let active = true;
+    const queue = documents.filter(item => searchBodies[item.id] === undefined);
+    const worker = async () => {
+      while (active && queue.length) {
+        const item = queue.shift();
+        if (!item) break;
+        try {
+          const value = await documentationApi.get(item.id);
+          if (active && value) setSearchBodies(previous => ({ ...previous, [item.id]: value.content }));
+        } catch { /* Metadata search remains available; the API still enforces access. */ }
+      }
+    };
+    void Promise.all([worker(), worker(), worker()]);
+    return () => { active = false; };
+    // Only start a batch when the query or authorized catalog changes.
+  }, [query, documents]);
+  useEffect(() => {
+    if (!document || !location.hash) return;
+    let id = location.hash.slice(1);
+    try { id = decodeURIComponent(id); } catch { /* Keep malformed fragments harmless. */ }
+    window.document.getElementById(id)?.scrollIntoView?.({ block: "start" });
+  }, [document, location.hash]);
+  const toggleTheme = () => {
+    const next = theme === "light" ? "dark" : "light";
+    setTheme(next);
+    try { localStorage.setItem("innovalogic-docs-theme", next); } catch { /* Theme still works for this visit. */ }
+  };
+
   const filteredDocuments = useMemo(() => {
-    const normalized = query.trim().toLocaleLowerCase("es");
+    const normalized = normalize(query.trim());
     return normalized
       ? documents.filter((item) =>
-          `${item.title} ${item.description} ${item.category}`
-            .toLocaleLowerCase("es")
+          normalize(`${item.title} ${item.description} ${item.category} ${searchBodies[item.id] ?? ""}`)
             .includes(normalized),
         )
       : documents;
-  }, [documents, query]);
+  }, [documents, query, searchBodies]);
 
   const grouped = filteredDocuments.reduce<
     Record<string, DocumentationSummary[]>
@@ -107,7 +144,12 @@ export function DocumentationPage() {
   );
 
   return (
-    <main className="mx-auto max-w-[1500px] px-4 py-6 sm:px-8 sm:py-8">
+    <main className="innovalogic-docs mx-auto max-w-[1500px] px-4 py-6 sm:px-8 sm:py-8" data-docs-theme={theme} onKeyDown={event => {
+      if (event.key !== "Escape") return;
+      const details = (event.target as HTMLElement).closest("details");
+      if (details) { details.open = false; details.querySelector("summary")?.focus(); }
+    }}>
+      <button className="innova-theme mb-3" type="button" onClick={toggleTheme} aria-pressed={theme === "dark"}>Tema {theme === "light" ? "oscuro" : "claro"}</button>
       <div className="mb-6 rounded-2xl border border-slate-200 bg-white px-3 py-2 shadow-sm">
         <div className="hidden items-center justify-between gap-4 lg:flex">
           <nav
@@ -229,10 +271,10 @@ export function DocumentationPage() {
                 Todos los documentos
               </Link>
               {Object.entries(grouped).map(([category, items]) => (
-                <section className="mt-5" key={category}>
-                  <h2 className="px-3 text-xs font-black uppercase tracking-wider text-slate-400">
+                <details open className="mt-5" key={category}>
+                  <summary className="px-3 text-xs font-black uppercase tracking-wider text-slate-400">
                     {category}
-                  </h2>
+                  </summary>
                   <div className="mt-2 space-y-1">
                     {items?.map((item) => (
                       <Link
@@ -247,7 +289,7 @@ export function DocumentationPage() {
                       </Link>
                     ))}
                   </div>
-                </section>
+                </details>
               ))}
               {filteredDocuments.length === 0 ? (
                 <p className="px-3 py-5 text-sm text-slate-500">
@@ -333,6 +375,9 @@ export function DocumentationPage() {
                 </>
               ) : (
                 <div>
+                  <nav className="innova-paths" aria-label="Recorridos de lectura">{[
+                    ["01-project-overview", "Conocer el producto"], ["12-user-manual", "Aprender a usarlo"], ["13-junior-developer-guide", "Explorar el desarrollo"]
+                  ].filter(([id]) => documents.some(item => item.id === id)).map(([id,title]) => <Link key={id} to={`${DOCS_ROOT}/${id}`}><strong>{title}</strong></Link>)}</nav>
                   <h2 className="text-2xl font-black text-slate-900">
                     Selecciona un documento
                   </h2>
